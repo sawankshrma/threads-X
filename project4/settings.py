@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
+    "corsheaders", #TODO: remove it! 
+
     'network',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +44,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+
+    "corsheaders.middleware.CorsMiddleware", #TODO: remove it! 
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -49,6 +55,32 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+##########################################
+############ remove it ###################
+##########################################
+
+
+# Allow your Vite dev server origin
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+
+# Allow sending cookies across origins
+CORS_ALLOW_CREDENTIALS = True
+
+# Allow CSRF from Vite dev server
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+]
+
+
+##########################################
+############ remove it ###################
+##########################################
+
+
 
 ROOT_URLCONF = 'project4.urls'
 

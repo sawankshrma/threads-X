@@ -1,0 +1,28 @@
+.navbar-cs50 {
+  display: flex !important;
+  justify-content: space-between;
+  padding-top: 0% !important;
+  padding-bottom: 0% !important;
+  background-color: rgb(36, 35, 35) !important;
+}
+
+.navbar-cs50 .navbar-brand {
+  color: white !important;
+}
+
+.navbar-cs50 .navbar-brand:hover {
+  color: #ddd !important;
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ddd !important;
+}
+/* 
+body {
+  background-color: black;
+  color: white;
+} */
