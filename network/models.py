@@ -13,6 +13,7 @@ class User(AbstractUser):
             "email": self.email,
             "followers": [u.username for u in self.followers.all()],
             "following": [u.username for u in self.following.all()],
+            "profile_pic_url": self.profile_pic_url,
         }
 
 class Post(models.Model):
