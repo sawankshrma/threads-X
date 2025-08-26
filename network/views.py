@@ -1,4 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
+from django.core.validators import URLValidator
+from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
@@ -23,6 +25,19 @@ def create_post(request):
     # Get contents of post
     image_url = data.get("image_url", "")
     body = data.get("body", "")
+
+    if body == "":
+        return JsonResponse({"error": "The body of the post shouldn't be empty"}, status=402)
+
+    if image_url:  # only validate if provided
+        validator = URLValidator()
+        try:
+            validator(image_url)
+        except ValidationError:
+            return JsonResponse(
+                {"error": "Invalid image URL"},
+                status=400
+            )
 
     post = Post(
         image_url=image_url,

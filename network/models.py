@@ -18,7 +18,7 @@ class User(AbstractUser):
 
 class Post(models.Model):
    
-    body = models.CharField(max_length=1000)
+    body = models.TextField(max_length=4000)
     image_url = models.URLField(blank=True, null=True)
     
     created_at = models.DateTimeField(auto_now_add=True)
