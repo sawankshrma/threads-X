@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
 
-    "corsheaders", #TODO: remove it! 
+    "corsheaders", #TODO: remove it!         
 
     'network',
     'django.contrib.admin',
@@ -63,17 +63,17 @@ MIDDLEWARE = [
 
 
 # Allow your Vite dev server origin
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173", 
+# ]
 
 # Allow sending cookies across origins
 CORS_ALLOW_CREDENTIALS = True
 
 # Allow CSRF from Vite dev server
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     "http://localhost:5173",
+# ]
 
 
 ##########################################

@@ -63,6 +63,14 @@ def posts(request):
         posts = Post.objects.all().order_by("-created_at")
         return JsonResponse([post.serialize() for post in posts], safe=False)
 
+@login_required
+def user_info(request):
+    return JsonResponse({
+        "username": request.user.username,
+        "email": request.user.email,
+        "profile_pic": request.user.profile_pic_url,
+    })
+
 
 @csrf_exempt
 @login_required
