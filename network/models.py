@@ -33,7 +33,7 @@ class Post(models.Model):
             "image_url": self.image_url,
             "created_at": self.created_at.strftime("%b %d %Y, %I:%M %p"),
             "owner": self.owner.username,
-            "liked_users": [user.email for user in self.liked_users.all()]
+            "liked_users": [user.username for user in self.liked_users.all()]
         }
 
     def __str__(self):

@@ -71,9 +71,9 @@ MIDDLEWARE = [
 CORS_ALLOW_CREDENTIALS = True
 
 # Allow CSRF from Vite dev server
-# CSRF_TRUSTED_ORIGINS = [
-#     "http://localhost:5173",
-# ]
+CSRF_TRUSTED_ORIGINS = [
+    "https://0ebaba9ae73bd096daf587866c8bfedc.serveo.net",
+]
 
 
 ##########################################
