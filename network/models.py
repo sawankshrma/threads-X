@@ -14,6 +14,7 @@ class User(AbstractUser):
             "followers": [u.username for u in self.followers.all()],
             "following": [u.username for u in self.following.all()],
             "profile_pic_url": self.profile_pic_url,
+            "total_posts": self.posts.count(),
         }
 
 class Post(models.Model):
