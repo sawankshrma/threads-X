@@ -140,26 +140,26 @@ def post(request, post_id):
         return JsonResponse(target_post.serialize(), safe=False)
     
     return JsonResponse({"error": "request method is wrong!"}, status=400)
-
-
-def login_view(request):
+  
+@csrf_exempt
+def login_view (request):
     if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            username = data.get("username")
+            password = data.get("password")
+        except:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
 
-        # Attempt to sign user in
-        username = request.POST["username"]
-        password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
-
-        # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            return JsonResponse({"message": "Login successful"}, status=201)
         else:
-            return render(request, "network/login.html", {
-                "message": "Invalid username and/or password."
-            })
+            return JsonResponse({"error": "Invalid username and/or password."}, status=400)
     else:
-        return render(request, "network/login.html")
+        return JsonResponse({"error": "POST request required."}, status=405)
+
 
 
 def logout_view(request):
@@ -167,21 +167,25 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("index"))
 
 
+@csrf_exempt
 def register(request):
     if request.method == "POST":
-        username = request.POST["username"]
-        email = request.POST["email"]
-        profile_pic_url = request.POST["profile_pic"]
+        try:
+            data = json.loads(request.body)
+            username = data.get("username")
+            email = data.get("email")
+            password = data.get("password")
+            confirmation = data.get("confirmation")
+            profile_pic_url = data.get("profile_pic_url", "")
+        except:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
 
-        # Ensure password matches confirmation
-        password = request.POST["password"]
-        confirmation = request.POST["confirmation"]
+        if not username or not email or not password or not confirmation:
+            return JsonResponse({"error": "Missing required fields"}, status=400)
+
         if password != confirmation:
-            return render(request, "network/register.html", {
-                "message": "Passwords must match."
-            })
+            return JsonResponse({"error": "Passwords must match."}, status=400)
 
-        # Attempt to create new user
         try:
             user = User.objects.create_user(
                 username=username,
@@ -189,14 +193,13 @@ def register(request):
                 password=password,
                 profile_pic_url=profile_pic_url
             )
-
             user.save()
         except IntegrityError:
-            return render(request, "network/register.html", {
-                "message": "Username already taken."
-            })
+            return JsonResponse({"error": "Username already taken."}, status=400)
+
         login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+        return JsonResponse({"message": "Registration successful"}, status=201)
+
     else:
-        return render(request, "network/register.html")
+        return JsonResponse({"error": "POST request required."}, status=405)
 
