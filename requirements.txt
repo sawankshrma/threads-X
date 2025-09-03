@@ -2,9 +2,13 @@ asgiref==3.8.1
 dj-database-url==3.0.0
 Django==5.2.3
 django-cors-headers==4.7.0
+django-mssql-backend==2.8.1
 gunicorn==23.0.0
 packaging==25.0
 psycopg2-binary==2.9.10
+pyodbc==5.2.0
+python-dotenv==1.1.1
+pytz==2025.2
 sqlparse==0.5.3
 typing_extensions==4.14.0
 tzdata==2025.2
