@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
 
-    "corsheaders", #TODO: remove it!         
+    # "corsheaders", #TODO: remove it!         
 
     'network',
     'django.contrib.admin',
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
 
-    "corsheaders.middleware.CorsMiddleware", #TODO: remove it! 
+    # "corsheaders.middleware.CorsMiddleware", #TODO: remove it! 
 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -57,28 +57,28 @@ MIDDLEWARE = [
 ]
 
 
-##########################################
-############ remove it ###################
-##########################################
+# ##########################################
+# ############ remove it ###################
+# ##########################################
 
 
-# Allow your Vite dev server origin
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:5173", 
+# # Allow your Vite dev server origin
+# # CORS_ALLOWED_ORIGINS = [
+# #     "http://localhost:5173", 
+# # ]
+
+# # Allow sending cookies across origins
+# CORS_ALLOW_CREDENTIALS = True
+
+# # Allow CSRF from Vite dev server
+# CSRF_TRUSTED_ORIGINS = [
+#     "https://0ebaba9ae73bd096daf587866c8bfedc.serveo.net",
 # ]
 
-# Allow sending cookies across origins
-CORS_ALLOW_CREDENTIALS = True
 
-# Allow CSRF from Vite dev server
-CSRF_TRUSTED_ORIGINS = [
-    "https://0ebaba9ae73bd096daf587866c8bfedc.serveo.net",
-]
-
-
-##########################################
-############ remove it ###################
-##########################################
+# ##########################################
+# ############ remove it ###################
+# ##########################################
 
 
 
@@ -152,3 +152,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, "static") ]

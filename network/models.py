@@ -4,7 +4,7 @@ from django.db import models
 
 class User(AbstractUser):
     followers = models.ManyToManyField ('User', blank=True, symmetrical=False, related_name="following")
-    profile_pic_url = models.URLField(blank=True, null=True)
+    profile_pic_url = models.URLField(max_length=500, blank=True, null=True)
 
     def serialize(self):
         return {
@@ -20,7 +20,7 @@ class User(AbstractUser):
 class Post(models.Model):
    
     body = models.TextField(max_length=4000)
-    image_url = models.URLField(blank=True, null=True)
+    image_url = models.URLField(max_length=500, blank=True, null=True)
     
     created_at = models.DateTimeField(auto_now_add=True)
 

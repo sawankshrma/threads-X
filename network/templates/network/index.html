@@ -1,17 +1,46 @@
-{% extends "network/layout.html" %} {% load static %} {% block links %}
-<script
-  src="https://unpkg.com/react@17/umd/react.production.min.js"
-  crossorigin
-></script>
-<script
-  src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
-  crossorigin
-></script>
-<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-{%endblock %} {% block body %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/static/network/assets/twitter-Cm4O4c-l.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TweetX</title>
+    <script type="module" crossorigin src="/static/network/assets/index-9rVsErUe.js"></script>
+    <link rel="stylesheet" crossorigin href="/static/network/assets/index-z7zDS_o4.css">
+  </head>
+  <body>
+    <div id="root"></div>
 
-<div id="app"></div>
+  </body>
+</html> -->
 
-<!-- JSX script -->
-<script type="text/babel" src="{% static 'network/app.jsx' %}"></script>
-{%endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" href="{% static 'network/assets/profile.png' %}" /> -->
+    <link
+      rel="icon"
+      href="{% static 'network/assets/twitter-Cm4O4c-l.png' %}"
+      type="image/x-icon"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TweetX</title>
+
+    <script
+      type="module"
+      crossorigin
+      src="{% static 'network/assets/index-DBujiH2V.js' %}"
+    ></script>
+    <link
+      rel="stylesheet"
+      crossorigin
+      href="{% static 'network/assets/index-z7zDS_o4.css' %}"
+    />
+  </head>
+  <body>
+    { csrf_token }
+    <div id="root"></div>
+  </body>
+</html>

@@ -8,13 +8,15 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 import json
+from django.middleware.csrf import get_token
 
 from .models import User, Post
 
 def index(request):
+    csrf_token = get_token(request)
     return render(request, "network/index.html")
 
-@csrf_exempt
+# @csrf_exempt
 @login_required
 def create_post(request):
     
@@ -72,7 +74,7 @@ def user_info(request):
     })
 
 
-@csrf_exempt
+# @csrf_exempt
 @login_required
 def user(request, username):
     try:
@@ -107,7 +109,7 @@ def user(request, username):
     return JsonResponse({"error": "request method is wrong!"}, status=400)
 
 
-@csrf_exempt
+# @csrf_exempt
 @login_required
 def post(request, post_id):
     try:

@@ -1,5 +1,7 @@
 
 from django.urls import path
+from django.urls import path, re_path
+from django.views.generic import TemplateView
 
 from . import views
 
@@ -14,4 +16,6 @@ urlpatterns = [
     path("api/login", views.login_view, name="login"),
     path("api/logout", views.logout_view, name="logout"),
     path("api/register", views.register, name="register"),
+    re_path(r"^(?:.*)/?$", TemplateView.as_view(template_name="network/index.html")),
+
 ]
